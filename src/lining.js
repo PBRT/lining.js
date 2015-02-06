@@ -364,6 +364,14 @@
         this._autoResize = opt['autoResize'] == null
             ? element.hasAttribute('data-auto-resize')
             : opt['autoResize'];
+        /**
+         * Autoresize timing. By default equal to 1000
+         * @type {number}
+         * @private
+         */    
+        this._autoResizeTiming = opt['autoResizeTiming'] == null
+            ? 1000
+            : opt['autoResizeTiming'];
 
         /**
          * from line number
@@ -504,7 +512,7 @@
 
             timeout = setTimeout(function () {
                 that.relining();
-            }, 1000);
+            }, this._autoResizeTiming);
         }, false);
 
         return that;
